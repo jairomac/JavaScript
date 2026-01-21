@@ -1,0 +1,80 @@
+
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Learning JavaScript</title>
+  </head>
+  <body>
+    <h1>Code Cash</h1>
+    <script>
+
+      alert("Bem vindo ao Code Cash, seu banco virtual!");
+
+      var nome = prompt("Qual o seu nome?");
+
+      alert(`Olá, ${nome}!`);
+
+      var saldo = 0;
+
+      function operar() {
+        var operacao = Number(prompt(`
+          Escolha a operação:
+          
+          1. Consultar
+          2. Sacar
+          3. Depositar
+          4. Sair
+
+        `));
+
+        switch (operacao) {
+          case 1:
+            alert(`Seu saldo é: ${saldo}`);
+            return operar();
+
+          case 2:
+            var saqueValor = Number(prompt("Qual o valor do saque?"));
+            if (saqueValor <= 0 || isNaN(saqueValor)) {
+              alert("Operação inválida!");
+              return operar();
+            } else if (saqueValor > saldo) {
+              alert("Valor indisponível.");
+              return operar();
+            } else {
+              saldo = saldo - saqueValor;
+              alert(`Saque realizado com sucesso. Saldo atual: ${saldo}`);
+              return operar();
+            }
+          
+          case 3:
+            var depositoValor = Number(prompt("Qual o valor do depósito?"));
+            if (depositoValor <= 0 || isNaN(depositoValor)) {
+              alert("Operação inválida!");
+              return operar();
+            } else {
+              saldo = saldo + depositoValor;
+              alert(`Depósito realizado com sucesso. Saldo atual: ${saldo}`);
+              return operar();
+            }
+
+          case 4:
+            alert(`Sempre um prazer antendê-lo, ${nome}. Até logo!`);
+            return;
+          
+          default:
+            alert("Operaçao inválida.");
+            return operar();
+        }
+      }
+      
+      operar()
+
+    </script>
+  </body>
+</html>
