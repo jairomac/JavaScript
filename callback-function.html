@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+<body>
+    <h1>Callback Function</h1>
+    <script>
+        function verificarIdade(nome, idade){
+            if (idade >= 18){
+                alert(`Olá, ${nome}! Você pode entrar na festa.`);
+                return;
+            }
+            alert (`Olá, ${nome}! Você não pode entrar na festa.`);
+        }
+
+        function processarDados(funcao) {
+            var nome = prompt ('Qual o seu nome?')
+            var idade = Number(prompt('Qual a sua idade?'));
+
+            funcao(nome, idade);
+        }
+
+        processarDados(verificarIdade);
+    </script>
+</body>
+</html>
